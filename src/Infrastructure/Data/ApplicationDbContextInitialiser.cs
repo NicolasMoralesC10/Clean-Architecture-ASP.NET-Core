@@ -42,8 +42,9 @@ public class ApplicationDbContextInitialiser
     public async Task InitialiseAsync()
     {
         try
-        {
-            await _context.Database.MigrateAsync();
+        {   // Migracion automatica de la base de datos
+            // await _context.Database.MigrateAsync();
+            await _context.Database.CanConnectAsync();
         }
         catch (Exception ex)
         {

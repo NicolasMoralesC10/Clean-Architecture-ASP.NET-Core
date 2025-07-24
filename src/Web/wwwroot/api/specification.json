@@ -6,6 +6,26 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/AreasTrabajo": {
+      "get": {
+        "tags": [
+          "AreasTrabajo"
+        ],
+        "operationId": "GetAreasTrabajo",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AreasTrabajoVm"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/TodoItems": {
       "get": {
         "tags": [
@@ -323,6 +343,39 @@
   },
   "components": {
     "schemas": {
+      "AreasTrabajoVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "areasTrabajo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AreaTrabajoDto"
+            }
+          }
+        }
+      },
+      "AreaTrabajoDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "idAreaTrabajo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "areaTrabajoNombre": {
+            "type": "string"
+          },
+          "esAreaProduccion": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "PaginatedListOfTodoItemBriefDto": {
         "type": "object",
         "additionalProperties": false,
